@@ -3,11 +3,13 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import { deepOrange, deepPurple } from "@mui/material/colors";
-import { Avatar } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
+import DrawerComp from "./DrawerComp";
+import Navbar from "./Navbar";
 
 const Header = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "#06283D" }}>
@@ -20,18 +22,7 @@ const Header = () => {
           >
             QNotes
           </Typography>
-          <Stack direction="row" spacing={2} sx={coustemStyle.border}>
-            <Avatar
-              sx={{
-                bgcolor: deepPurple[500],
-                height: 36,
-                weight: 20,
-                margin: "8px",
-              }}
-            >
-              OP
-            </Avatar>
-          </Stack>
+          {isMobile ? <DrawerComp /> : <Navbar />}
         </Toolbar>
       </AppBar>
     </Box>
@@ -39,20 +30,10 @@ const Header = () => {
 };
 
 const coustemStyle = {
-  border: {
-    // border: "1px solid red",
-    width: "100%",
-    display: "flex",
-    justifyContent: "right",
-    float: "right",
-  },
   logo: {
     fontWeight: "bold",
     // border: "1px solid yellow",
-  },
-  avatar: {
-    height: 24,
-    weight: 24,
+    width: "100%",
   },
 };
 
