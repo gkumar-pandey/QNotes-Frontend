@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aqua;
+  height: 95vh;
+  width: 100%;
+}
+
+.form-container {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+  /* height: 100%; */
+  margin: 0.5rem;
+}
+.form-container div {
+  margin: 4px;
+}
+.heading h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+label {
+  font-size: 1.3rem;
+}
+input {
+  padding: 4px 8px;
+  font-size: 1.3rem;
+}
+
+.login-btn button {
+  /* border: 1px solid blue; */
+  border: none;
+  border-radius: 0.5rem;
+  background-color: blue;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+@media (max-width: 500px) {
+  .form-container {
+    /* border: 1px solid red; */
+    padding: 5px;
+  }
+}
