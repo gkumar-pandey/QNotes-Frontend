@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IconButton } from "@mui/material";
 import { Snackbar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,8 +10,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function AlertMassage({ message, serverity }) {
-  const [open, setOpen] = useState(true);
+export default function AlertMassage({ message, serverity, openAlert }) {
+  const [open, setOpen] = useState(openAlert);
   function handleClose(event, reason) {
     if (reason === "clickaway") {
       return;
