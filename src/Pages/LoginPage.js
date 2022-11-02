@@ -3,10 +3,9 @@ import "./LoginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { serverLink } from "../Components/common";
 import axios from "axios";
-import AlertMassage from "../Components/Alert";
+import { openNotificationWithIcon } from "../Components/AlertComp";
 import Loading from "../Components/Loading";
 const LoginPage = () => {
-  const [alertMsg, setAlertMsg] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -27,24 +26,19 @@ const LoginPage = () => {
       const { data } = await axios.post(`${serverLink}user/signin`, user);
       const { token } = data;
       const userData = data.user;
-      setAlertMsg({
-        msg: "Login Successfull",
-        serverity: "success",
-      });
+
       setIsLoading(false);
       clearInputField();
       localStorage.setItem("User", JSON.stringify(userData));
       localStorage.setItem("token", JSON.stringify(token));
-
+      openNotificationWithIcon("success", "Login Successfull");
       setTimeout(() => {
         navigate("/note");
       }, 3000);
     } catch (error) {
-      setAlertMsg({
-        msg: error.response.data.message,
-        serverity: "error",
-      });
+      openNotificationWithIcon("error", error.response.data.message);
       console.error(error.response.data.message);
+      setIsLoading(false);
     }
   };
 
@@ -83,11 +77,6 @@ const LoginPage = () => {
           <Link to={"/signup"}>Sign Up</Link>
         </div>
       </div>
-      <>
-        {alertMsg ? (
-          <AlertMassage message={alertMsg.msg} serverity={alertMsg.serverity} />
-        ) : null}
-      </>
     </div>
   );
 };
