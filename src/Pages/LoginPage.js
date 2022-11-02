@@ -16,11 +16,7 @@ const LoginPage = () => {
     setPassword("");
   };
 
-  const loginBtnHandler = async () => {
-    const user = {
-      email: email,
-      password: password,
-    };
+  const login = async (user) => {
     try {
       setIsLoading(true);
       const { data } = await axios.post(`${serverLink}user/signin`, user);
@@ -40,6 +36,26 @@ const LoginPage = () => {
       console.error(error.response.data.message);
       setIsLoading(false);
     }
+  };
+
+  const loginBtnHandler = () => {
+    const user = {
+      email: email,
+      password: password,
+    };
+    login(user);
+  };
+
+  const loginWithTestCredential = () => {
+    const testEmail = "test@gmail.com";
+    const testPass = "12345678";
+    const testUser = {
+      email: testEmail,
+      password: testPass,
+    };
+    setEmail(testEmail);
+    setPassword(testPass);
+    login(testUser);
   };
 
   return (
@@ -70,6 +86,9 @@ const LoginPage = () => {
           <button onClick={loginBtnHandler}>
             {isLoading && <Loading />}
             {!isLoading && "Log in"}
+          </button>
+          <button onClick={loginWithTestCredential}>
+            Login with test credential
           </button>
         </div>
         <div>
