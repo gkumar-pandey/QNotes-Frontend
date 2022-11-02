@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <>
       <div style={style.loading}>
-        <CircularProgress sx={style.loadingBtn} size={25} />
+        <CircularProgress sx={style.loadingBtn} size={20} />
         Loading..
       </div>
     </>

@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button/Button";
 import "./Form.css";
 
 const FormComp = ({
@@ -33,7 +34,7 @@ const FormComp = ({
           {isEdit ? (
             <button onClick={() => updateNote()}>Save</button>
           ) : (
-            <button onClick={() => postHandler()}>Add</button>
+            <Button onClick={() => postHandler()} title={"Create Note"} />
           )}
         </div>
       </div>

@@ -1,4 +1,10 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBackspace,
+  faTrash,
+  faPenToSquare,
+} from "@fortawesome/free-solid-svg-icons";
 
 const NoteCard = ({ note, deleteHandler, editHandler }) => {
   const id = note._id;
@@ -11,15 +17,17 @@ const NoteCard = ({ note, deleteHandler, editHandler }) => {
         <p>{note.description}</p>
       </div>
       <div style={NoteCardStyle.btnContainer}>
-        <button style={NoteCardStyle.btn} onClick={() => editHandler(note)}>
-          Edit
-        </button>
-        <button
-          onClick={(e) => deleteHandler(id, note)}
-          style={NoteCardStyle.btn}
-        >
-          Delete
-        </button>
+        <FontAwesomeIcon
+          style={NoteCardStyle.editIcon}
+          onClick={() => editHandler(note)}
+          icon={faPenToSquare}
+        />
+
+        <FontAwesomeIcon
+          onClick={() => deleteHandler(id)}
+          style={NoteCardStyle.deleteIcon}
+          icon={faTrash}
+        />
       </div>
     </div>
   );
@@ -33,6 +41,11 @@ const NoteCardStyle = {
     padding: "0.3rem",
     borderRadius: "8px",
   },
+  editIcon: {
+    color: "green",
+    fontSize: "1.5rem",
+    cursor: "pointer",
+  },
   heading: {
     textAlign: "center",
   },
@@ -40,7 +53,6 @@ const NoteCardStyle = {
     textAlign: "center",
   },
   btnContainer: {
-    // border: "1px solid red",
     display: "flex",
     justifyContent: "flex-end",
     padding: "5px",
@@ -49,6 +61,12 @@ const NoteCardStyle = {
     padding: "2px 5px",
     fontSize: "0.8rem",
     margin: "0 0.5rem",
+  },
+  deleteIcon: {
+    color: "red",
+    fontSize: "1.5rem",
+    cursor: "pointer",
+    margin: "0 1rem",
   },
 };
 

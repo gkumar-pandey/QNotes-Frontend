@@ -1,3 +1,3 @@
-const serverLink = "http://localhost:5000/";
+const serverLink = "https://qnotes-backend-production.up.railway.app/";
 
 export { serverLink };
