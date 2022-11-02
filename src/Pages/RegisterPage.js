@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { serverLink } from "../Components/common";
 import Loading from "../Components/Loading";
+import { openNotificationWithIcon } from "../Components/AlertComp";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [alertMsg, setAlertMsg] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -20,33 +20,31 @@ const RegisterPage = () => {
   const validInputs = (username, email, pass, confirmPass) => {
     // check all input are filled
     if (username == "" || pass == "" || confirmPass == "" || email == "") {
-      setAlertMsg({
-        msg: "Please Fill All inputs",
-        serverity: "info",
-      });
+      openNotificationWithIcon("warning", "Please Fill All inputs");
       return false;
     }
     // user name check
     if (username.length < 6) {
-      setAlertMsg({
-        msg: "username should have 6 character",
-        serverity: "info",
-      });
+      openNotificationWithIcon(
+        "warning",
+        "username should have atleast 6 character"
+      );
+
       return false;
     }
     // check length of password should be greater than 6
     if (pass.length < 6 || confirmPass.length < 6) {
-      setAlertMsg({
-        msg: "Password should have atleast 6 character",
-        serverity: "warning",
-      });
+      openNotificationWithIcon(
+        "warning",
+        "Password should have atleast 6 character"
+      );
       return false;
     }
     if (pass !== confirmPass) {
-      setAlertMsg({
-        msg: "Password and confirm password not match",
-        serverity: "warning",
-      });
+      openNotificationWithIcon(
+        "warning",
+        "Password and confirm password not match"
+      );
       return false;
     }
 
@@ -70,19 +68,15 @@ const RegisterPage = () => {
       setIsLoading(true);
       const { data } = await axios.post(`${serverLink}user/signup`, user);
       setIsLoading(false);
-      setAlertMsg({
-        msg: "Register Successfully",
-        serverity: "success",
-      });
+
+      openNotificationWithIcon("success", "Register Succesfully");
       clearInputField();
       setTimeout(() => {
         navigate("/login");
       }, 3000);
     } catch (error) {
-      setAlertMsg({
-        msg: error.response.data.message,
-        serverity: "error",
-      });
+      openNotificationWithIcon("error", error.response.data.message);
+      setIsLoading(false);
       console.error(error.response.data.message);
     }
   };
@@ -147,11 +141,6 @@ const RegisterPage = () => {
           <Link to={"/login"}>Login</Link>
         </div>
       </div>
-      <>
-        {alertMsg ? (
-          <AlertMassage message={alertMsg.msg} serverity={alertMsg.serverity} />
-        ) : null}
-      </>
     </div>
   );
 };
