@@ -1,0 +1,29 @@
+.form-container {
+  /* border: 1px solid red; */
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+}
+
+.form-container div {
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
+}
+.heading {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 4px 0;
+}
+
+textarea {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+button {
+  font-size: 1.3rem;
+  margin: 4px;
+  padding: 4px;
+}
