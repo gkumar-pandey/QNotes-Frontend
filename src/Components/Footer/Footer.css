@@ -1,0 +1,23 @@
+.footer {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #06283d;
+}
+
+.footer-text {
+  /* border: 1px solid red; */
+  padding: 0.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+}
+
+.social-link a {
+  /* border: 1px solid red; */
+  font-size: 1rem;
+  color: #fff;
+  padding: 0 0.5rem;
+}
