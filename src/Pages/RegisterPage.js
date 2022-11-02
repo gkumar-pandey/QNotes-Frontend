@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container } from "@mui/material";
-import AlertMassage from "../Components/Alert";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { serverLink } from "../Components/common";
@@ -72,7 +70,7 @@ const RegisterPage = () => {
       openNotificationWithIcon("success", "Register Succesfully");
       clearInputField();
       setTimeout(() => {
-        navigate("/login");
+        navigate("/");
       }, 3000);
     } catch (error) {
       openNotificationWithIcon("error", error.response.data.message);
@@ -133,7 +131,7 @@ const RegisterPage = () => {
         <div className="login-btn">
           <button onClick={registerHandler}>
             {isLoading && <Loading />}
-            {!isLoading && "Log in"}
+            {!isLoading && "Sign Up"}
           </button>
         </div>
         <div>

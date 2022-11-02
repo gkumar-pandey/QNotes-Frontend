@@ -122,7 +122,7 @@ const HomePage = () => {
     setIsEdit(true);
   };
   return (
-    <div>
+    <div style={coustemStyle.home}>
       <Container>
         <FormComp
           title={title}
@@ -165,6 +165,9 @@ const coustemStyle = {
     display: "flex",
     justifyContent: "center",
     flexWrap: "wrap",
+  },
+  home: {
+    minHeight: "100vh",
   },
 };
 
