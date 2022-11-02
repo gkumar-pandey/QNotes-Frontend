@@ -32,9 +32,9 @@ const FormComp = ({
             col="8"
           ></textarea>
           {isEdit ? (
-            <Button onClick={() => updateNote()} title={"Update Note"} />
+            <Button onclickHandler={updateNote} title={"Update Note"} />
           ) : (
-            <Button onClick={() => postHandler()} title={"Create Note"} />
+            <Button onclickHandler={postHandler} title={"Create Note"} />
           )}
         </div>
       </div>

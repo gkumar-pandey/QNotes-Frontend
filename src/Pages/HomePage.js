@@ -23,6 +23,7 @@ const HomePage = () => {
   };
 
   const postNewNote = async () => {
+    // console.log("New note");
     const newNote = {
       title: title,
       description: description,
