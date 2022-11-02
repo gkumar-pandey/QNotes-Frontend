@@ -4,6 +4,7 @@ import { Avatar } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 
 const AvatarComp = () => {
+  const userName = JSON.parse(localStorage.getItem("User")).username;
   return (
     <>
       <Stack direction="row" spacing={2} sx={AvatarStyle.border}>
@@ -15,7 +16,7 @@ const AvatarComp = () => {
             margin: "8px",
           }}
         >
-          OP
+          {userName[0].toUpperCase()}
         </Avatar>
       </Stack>
     </>

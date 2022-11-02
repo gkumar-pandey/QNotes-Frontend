@@ -4,11 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { serverLink } from "../Components/common";
 import axios from "axios";
 import AlertMassage from "../Components/Alert";
-
+import Loading from "../Components/Loading";
 const LoginPage = () => {
   const [alertMsg, setAlertMsg] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const clearInputField = () => {
@@ -22,6 +23,7 @@ const LoginPage = () => {
       password: password,
     };
     try {
+      setIsLoading(true);
       const { data } = await axios.post(`${serverLink}user/signin`, user);
       const { token } = data;
       const userData = data.user;
@@ -29,9 +31,10 @@ const LoginPage = () => {
         msg: "Login Successfull",
         serverity: "success",
       });
+      setIsLoading(false);
       clearInputField();
       localStorage.setItem("User", JSON.stringify(userData));
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", JSON.stringify(token));
 
       setTimeout(() => {
         navigate("/note");
@@ -70,7 +73,10 @@ const LoginPage = () => {
           />
         </div>
         <div className="login-btn">
-          <button onClick={loginBtnHandler}>Login</button>
+          <button onClick={loginBtnHandler}>
+            {isLoading && <Loading />}
+            {!isLoading && "Log in"}
+          </button>
         </div>
         <div>
           <p>Don't Have Account ? </p>
@@ -82,7 +88,6 @@ const LoginPage = () => {
           <AlertMassage message={alertMsg.msg} serverity={alertMsg.serverity} />
         ) : null}
       </>
-      )
     </div>
   );
 };
