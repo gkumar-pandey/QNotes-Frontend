@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useMediaQuery, useTheme } from "@mui/material";
-import DrawerComp from "./DrawerComp";
 import Navbar from "./Navbar";
 
 const Header = () => {
@@ -22,7 +21,7 @@ const Header = () => {
           >
             QNotes
           </Typography>
-          {isMobile ? <DrawerComp /> : <Navbar />}
+          <Navbar />
         </Toolbar>
       </AppBar>
     </Box>

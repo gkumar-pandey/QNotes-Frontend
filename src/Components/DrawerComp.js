@@ -25,17 +25,26 @@ const DrawerComp = () => {
         anchor="right"
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
-        PaperProps={{ sx: { width: "40%" } }}
+        PaperProps={{
+          sx: {
+            width: "40%",
+            backgroundColor: "#06283d",
+          },
+        }}
       >
         <List>
           <ListItem>
             <ListItemText>
-              <Button>Dark Mode</Button>
-            </ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemText>
-              <Button onClick={LogOutHandler}>Log out</Button>
+              <Button
+                sx={{
+                  color: "#fff",
+                  fontWeight: "bold",
+                  backgroundColor: "blue",
+                }}
+                onClick={LogOutHandler}
+              >
+                Log out
+              </Button>
             </ListItemText>
           </ListItem>
         </List>

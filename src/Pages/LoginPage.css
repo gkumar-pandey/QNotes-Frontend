@@ -9,9 +9,9 @@
 }
 
 .form-container {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
+  height: max-content;
   padding: 1rem;
   border-radius: 8px;
   background-color: #fff;

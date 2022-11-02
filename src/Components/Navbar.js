@@ -28,12 +28,10 @@ const Navbar = () => {
       justifyContent="flex-end"
       alignItems="center"
       spacing={2}
-      sx={{ width: "40%" }}
+      sx={{ width: isMobile ? "100%" : "40%" }}
     >
       <div>{isLogedIn && <AvatarComp />}</div>
-      <div>
-        <LightModeIcon />
-      </div>
+
       <div>
         <Button onClick={logOutdHandler} variant="contained">
           Log out
