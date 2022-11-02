@@ -8,9 +8,17 @@ import {
   IconButton,
 } from "@mui/material";
 import AvatarComp from "./AvatarComp";
+import { removeCredentialsFromLoacalStorage } from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 const DrawerComp = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const navigate = useNavigate();
+
+  const LogOutHandler = () => {
+    removeCredentialsFromLoacalStorage();
+    navigate("/");
+  };
   return (
     <div>
       <Drawer
@@ -27,7 +35,7 @@ const DrawerComp = () => {
           </ListItem>
           <ListItem>
             <ListItemText>
-              <Button>Log out</Button>
+              <Button onClick={LogOutHandler}>Log out</Button>
             </ListItemText>
           </ListItem>
         </List>
