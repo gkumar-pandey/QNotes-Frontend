@@ -2,6 +2,9 @@
 
 QNotes is a note taking web app build with React and Material UI
 
+![Forks](https://img.shields.io/github/forks/gkumar-pandey/QNotes-Frontend)
+![Stars](https://img.shields.io/github/stars/gkumar-pandey/QNotes-Frontend)
+
 ---
 
 ## Key Features
