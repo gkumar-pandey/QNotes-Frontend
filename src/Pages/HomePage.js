@@ -42,8 +42,14 @@ const HomePage = () => {
       clearInputs();
       openNotificationWithIcon("success", "Created Successfully");
       setLoading(false);
-    } catch (error) {}
+    } catch (error) {
+      openNotificationWithIcon("error", error.response.data.message);
+      console.log(error.response.data.message);
+      setLoading(false);
+    }
   };
+
+  // This will Delete the perticular note
   const deleteNote = async (id) => {
     try {
       setLoading(true);
@@ -58,10 +64,10 @@ const HomePage = () => {
       setLoading(false);
     } catch (error) {
       console.log(error);
+      openNotificationWithIcon("error", error.response.data.message);
+      setLoading(false);
     }
   };
-
-  // console.log(alertMsg);
 
   const updateNote = async (note) => {
     const id = idOfUpdateNote;
@@ -80,19 +86,21 @@ const HomePage = () => {
         dataForUpdate,
         config
       );
-
       const newArray = notesData
         .filter((obj) => obj._id !== data._id)
         .concat(data);
 
-      setNotesData(newArray);
+      setNotesData([...newArray]);
+
       clearInputs();
 
       setLoading(false);
       openNotificationWithIcon("success", "Update Note Successfully");
       setIsEdit(false);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.message);
+      openNotificationWithIcon(error.response.data.message);
+      setLoading(false);
     }
   };
 
@@ -107,12 +115,18 @@ const HomePage = () => {
       // console.log(data);
       setNotesData(data);
       setLoading(false);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.response.data.message);
+      openNotificationWithIcon(error.response.data.message);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {});
   const deleteHandler = (id, note) => {
     deleteNote(id);
   };

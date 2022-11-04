@@ -136,7 +136,7 @@ const RegisterPage = () => {
         </div>
         <div>
           <p>Already Have Account ? </p>
-          <Link to={"/login"}>Login</Link>
+          <Link to={"/"}>Login</Link>
         </div>
       </div>
     </div>

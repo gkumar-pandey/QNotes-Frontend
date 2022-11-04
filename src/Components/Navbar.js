@@ -1,8 +1,6 @@
 import React from "react";
 import AvatarComp from "./AvatarComp";
 import { Stack, useTheme } from "@mui/system";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { Button, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
