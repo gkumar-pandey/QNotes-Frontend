@@ -10,7 +10,6 @@ function App() {
   return (
     <div>
       <Router>
-        <Header />
         <Routes>
           <Route path="/note" element={<HomePage />} />
           <Route path="/signup" element={<RegisterPage />} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -6,9 +6,7 @@ import Typography from "@mui/material/Typography";
 import { useMediaQuery, useTheme } from "@mui/material";
 import Navbar from "./Navbar";
 
-const Header = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+const Header = ({ children }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "#06283D" }}>
@@ -21,7 +19,7 @@ const Header = () => {
           >
             QNotes
           </Typography>
-          <Navbar />
+          {children}
         </Toolbar>
       </AppBar>
     </Box>

@@ -28,7 +28,9 @@ const Navbar = () => {
       spacing={2}
       sx={{ width: isMobile ? "100%" : "40%" }}
     >
-      <div>{isLogedIn && <AvatarComp />}</div>
+      <div>
+        <AvatarComp />
+      </div>
 
       <div>
         <Button onClick={logOutdHandler} variant="contained">

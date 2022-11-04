@@ -6,6 +6,8 @@ import { serverLink } from "../Components/common";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import { openNotificationWithIcon } from "../Components/AlertComp";
+import Header from "../Components/Header";
+import Navbar from "../Components/Navbar";
 
 const HomePage = () => {
   const [notesData, setNotesData] = useState([]);
@@ -137,41 +139,44 @@ const HomePage = () => {
     setIsEdit(true);
   };
   return (
-    <div style={coustemStyle.home}>
-      <Container>
-        <FormComp
-          title={title}
-          setTitle={setTitle}
-          description={description}
-          setDescription={setDescription}
-          postHandler={postNewNote}
-          isEdit={isEdit}
-          updateNote={updateNote}
-        />
-        {loading ? (
-          <div
-            style={{
-              textAlign: "center",
-            }}
-          >
-            <CircularProgress />
-          </div>
-        ) : (
-          <div style={coustemStyle.container}>
-            {notesData.map((item, idx) => {
-              return (
-                <NoteCard
-                  note={item}
-                  key={idx}
-                  editHandler={editHandler}
-                  deleteHandler={deleteHandler}
-                />
-              );
-            })}
-          </div>
-        )}
-      </Container>
-    </div>
+    <>
+      <Header children={<Navbar />} />
+      <div style={coustemStyle.home}>
+        <Container>
+          <FormComp
+            title={title}
+            setTitle={setTitle}
+            description={description}
+            setDescription={setDescription}
+            postHandler={postNewNote}
+            isEdit={isEdit}
+            updateNote={updateNote}
+          />
+          {loading ? (
+            <div
+              style={{
+                textAlign: "center",
+              }}
+            >
+              <CircularProgress />
+            </div>
+          ) : (
+            <div style={coustemStyle.container}>
+              {notesData.map((item, idx) => {
+                return (
+                  <NoteCard
+                    note={item}
+                    key={idx}
+                    editHandler={editHandler}
+                    deleteHandler={deleteHandler}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </Container>
+      </div>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import { serverLink } from "../Components/common";
 import axios from "axios";
 import { openNotificationWithIcon } from "../Components/AlertComp";
 import Loading from "../Components/Loading";
+import Header from "../Components/Header";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -59,44 +60,47 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="container">
-      <div className="form-container">
-        <div className="heading">
-          <h3>Login</h3>
-        </div>
-        <div className="email-container">
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            placeholder="abc@gmail.com"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="password-container">
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="login-btn">
-          <button onClick={loginBtnHandler}>
-            {isLoading && <Loading />}
-            {!isLoading && "Log in"}
-          </button>
-          <button onClick={loginWithTestCredential}>
-            Login with test credential
-          </button>
-        </div>
-        <div>
-          <p>Don't Have Account ? </p>
-          <Link to={"/signup"}>Sign Up</Link>
+    <>
+      <Header />
+      <div className="container">
+        <div className="form-container">
+          <div className="heading">
+            <h3>Login</h3>
+          </div>
+          <div className="email-container">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              placeholder="abc@gmail.com"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="password-container">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="login-btn">
+            <button onClick={loginBtnHandler}>
+              {isLoading && <Loading />}
+              {!isLoading && "Log in"}
+            </button>
+            <button onClick={loginWithTestCredential}>
+              Login with test credential
+            </button>
+          </div>
+          <div>
+            <p>Don't Have Account ? </p>
+            <Link to={"/signup"}>Sign Up</Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
